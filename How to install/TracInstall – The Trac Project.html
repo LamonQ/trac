@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)https://trac.edgewall.org/wiki/TracInstall -->
+<html lang="en-US" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- # block head (placeholder in theme.html) -->
+        <!-- # block head (content inherited from layout.html) -->
+    <title>
+      TracInstall     – The Trac Project
+
+    </title>
+
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if IE]><script>
+        if (/^#__msie303:/.test(window.location.hash))
+        window.location.replace(window.location.hash.replace(/^#__msie303:/, '#'));
+        </script><![endif]-->
+
+    <link rel="search" href="https://trac.edgewall.org/search">
+    <link rel="help" href="https://trac.edgewall.org/wiki/TracGuide">
+    <link rel="alternate" href="https://trac.edgewall.org/wiki/TracInstall?format=txt" title="Plain Text" type="text/x-trac-wiki">
+    <link rel="start" href="https://trac.edgewall.org/wiki">
+    <link rel="stylesheet" href="./TracInstall – The Trac Project_files/trac.css" type="text/css">
+    <link rel="stylesheet" href="./TracInstall – The Trac Project_files/wiki.css" type="text/css">
+    <link rel="stylesheet" href="./TracInstall – The Trac Project_files/phrases.css" type="text/css">
+    <link rel="stylesheet" href="./TracInstall – The Trac Project_files/boxes.css" type="text/css">
+    <link rel="stylesheet" href="./TracInstall – The Trac Project_files/dynamicboxes.css" type="text/css">
+    <link rel="stylesheet" href="./TracInstall – The Trac Project_files/tracvote.css" type="text/css">
+    <link rel="icon" href="https://trac.edgewall.org/favicon.ico" type="image/x-icon">
+    <noscript>
+      <style>
+        .trac-noscript { display: none !important }
+      </style>     </noscript>
+    <link type="application/opensearchdescription+xml" rel="search" href="https://trac.edgewall.org/search/opensearch" title="Search The Trac Project">
+    <script src="./TracInstall – The Trac Project_files/f.txt"></script><script src="./TracInstall – The Trac Project_files/f(1).txt"></script><script src="./TracInstall – The Trac Project_files/jquery.js.download"></script>
+    <script src="./TracInstall – The Trac Project_files/babel.js.download"></script>
+    <script src="./TracInstall – The Trac Project_files/trac.js.download"></script>
+    <script src="./TracInstall – The Trac Project_files/search.js.download"></script>
+    <script src="./TracInstall – The Trac Project_files/folding.js.download"></script>
+    <script src="./TracInstall – The Trac Project_files/wiki.js.download"></script>
+    <script>
+      jQuery(function($) {
+        $(".trac-autofocus").focus();
+        $(".trac-target-new").attr("target", "_blank");
+        if ($.ui) { /* is jquery-ui added? */
+          $(".trac-datepicker:not([readonly])")
+            .prop("autocomplete", "off").datepicker();
+          // Input current date when today is pressed.
+          var _goToToday = $.datepicker._gotoToday;
+          $.datepicker._gotoToday = function(id) {
+            _goToToday.call(this, id);
+            this._selectDate(id)
+          };
+          $(".trac-datetimepicker:not([readonly])")
+            .prop("autocomplete", "off").datetimepicker();
+          $("#main").addClass("trac-nodatetimehint");
+        }
+        $(".trac-disable").disableSubmit(".trac-disable-determinant");
+        setTimeout(function() { $(".trac-scroll").scrollToTop() }, 1);
+        $(".trac-disable-on-submit").disableOnSubmit();
+      });
+    </script>
+    <!--   # include 'site_head.html' (layout.html) -->
+<link rel="stylesheet" type="text/css" href="./TracInstall – The Trac Project_files/projects013.css">
+<script type="text/javascript"><!--
+   window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"dark-bottom", "domain": "edgewall.org"};
+//--></script>
+
+<script type="text/javascript" src="./TracInstall – The Trac Project_files/cookieconsent.min.js.download"></script>
+
+<script type="text/javascript">
+  jQuery(function($) {
+    var $ntg = $("#newticketguide");
+    if ($ntg.length)
+      $("#propertyform").prepend($ntg.detach());
+  });
+</script>
+
+    <!--   end of site_head.html -->
+    <!-- # endblock head (content inherited from layout.html) -->
+
+
+    <link rel="alternate" type="application/x-wiki" href="https://trac.edgewall.org/wiki/TracInstall?action=edit&amp;version=" title="Edit this page">
+    <script>
+      jQuery(function($) {
+        wikiColumn($("#wikipage"));
+      });
+    </script>
+    <!-- # endblock head (placeholder in theme.html) -->
+  <meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9wSqI5i0iwGdf6L1CERNdmsTPgVu44ewj8QxTBYgsv1LCPUVF7YmWOvTappqB1139jAymxUW/RO8zmMqo4zlAAAAACNeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3MzY4MTI4MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A+d7vJfYtay4OUbdtRPZA3y7bKQLsxaMEPmxgfhBGqKXNrdkCQeJlUwqa6EBbSfjwFtJWTrWIioXeMW+y8bWAgQAAACTeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiRmxlZGdlQmlkZGluZ0FuZEF1Y3Rpb25TZXJ2ZXIiLCJleHBpcnkiOjE3MzY4MTI4MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><link rel="stylesheet" type="text/css" href="./TracInstall – The Trac Project_files/trac(1).css"></head> 
+  <body style="">
+    <!-- # block body (content inherited from theme.html) -->
+    <!--   # include 'site_header.html' (theme.html) -->
+<!-- site_header_trac.html -->
+<div id="wrapper">
+  <div id="topbar">
+    <a id="home-link" href="https://www.edgewall.org/">Edgewall Software</a>
+  </div>
+
+  <div id="ew-header">
+    <div id="topnav"><ul>
+        <li><a href="https://www.edgewall.org/">Home</a></li>
+        <li class="active">
+          <a class="trac" href="https://trac.edgewall.org/">Trac</a>
+        </li>
+        <li>
+          <a href="https://trac-hacks.org/">Trac Hacks</a>
+        </li>
+        <li class="">
+          <a class="genshi" href="https://genshi.edgewall.org/">Genshi</a>
+        </li>
+        <li class="">
+          <a class="babel" href="https://babel.edgewall.org/">Babel</a>
+        </li>
+        <li class="">
+          <a class="bitten" href="https://bitten.edgewall.org/">Bitten</a>
+      </li></ul>
+    </div>
+  </div>
+
+  <div id="ew-main">
+    <div id="ew-content">
+
+<div>
+  <script src="./TracInstall – The Trac Project_files/urchin.js.download" type="text/javascript"></script>
+  <script type="text/javascript">_uacct = "UA-598265-1";urchinTracker();</script>
+
+  <div id="left" style="">
+    <div class="block">
+      <ul>
+	<li><a href="https://trac.edgewall.org/">Home</a></li>
+	<li><a href="https://trac.edgewall.org/wiki/TracDownload">Download</a></li>
+	<li><a href="https://trac.edgewall.org/wiki/TracGuide">Documentation</a></li>
+	<li><a href="https://trac.edgewall.org/wiki/MailingList">Mailing Lists</a></li>
+	<li><a href="https://trac.edgewall.org/wiki/TracLicense">License</a></li>
+	<li><a href="https://trac.edgewall.org/wiki/TracFaq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+</div><!-- /site_header_trac.html -->
+    <!--   end of site_header.html -->
+
+    <div id="banner">
+      <div id="header">
+        <a id="logo" href="https://trac.edgewall.org/" style="">
+          <img alt="Trac" height="73" src="./TracInstall – The Trac Project_files/trac_logo.png" width="236"></a>
+
+
+      </div>
+      <form id="search" action="https://trac.edgewall.org/search" method="get" style="">
+        <div>
+          <label for="proj-search">Search:</label>
+          <input type="text" id="proj-search" name="q" size="18" value="">
+          <input type="submit" value="Search">
+        </div>
+      </form>
+          <div id="metanav" class="nav" style="">
+      <ul><li class="first"><a href="https://trac.edgewall.org/login">Login</a></li><li><a href="https://trac.edgewall.org/prefs">Preferences</a></li><li><a href="https://trac.edgewall.org/wiki/TracGuide">Help/Guide</a></li><li class="last"><a href="https://trac.edgewall.org/about">About Trac</a></li></ul>
+    </div>
+
+    </div>
+        <div id="mainnav" class="nav">
+      <ul><li class="active first"><a href="https://trac.edgewall.org/wiki">Wiki</a></li><li><a href="https://trac.edgewall.org/timeline">Timeline</a></li><li><a href="https://trac.edgewall.org/roadmap">Roadmap</a></li><li><a href="https://trac.edgewall.org/browser">Browse Source</a></li><li><a href="https://trac.edgewall.org/report">View Tickets</a></li><li><a href="https://trac.edgewall.org/wiki/NewTicket">New Ticket</a></li><li class="last"><a href="https://trac.edgewall.org/search">Search</a></li></ul>
+    </div>
+
+
+    <div id="main">
+
+<div id="pagepath" class="noprint">
+<a class="pathentry first" title="View WikiStart" href="https://trac.edgewall.org/wiki">wiki:</a><a href="https://trac.edgewall.org/wiki/TracInstall" title="View TracInstall" class="pathentry">TracInstall</a></div>      <div id="ctxtnav" class="nav">
+        <h2>Context Navigation</h2>
+        <ul>
+          <li class="first"><span id="vote" title="Vote count (-1)"><img alt="Up-vote" src="./TracInstall – The Trac Project_files/aupgray.png"><span id="votes">-1</span><img alt="Down-vote" src="./TracInstall – The Trac Project_files/adownmod.png"></span></li>
+          <li><a href="https://trac.edgewall.org/wiki/WikiStart">Start Page</a></li>
+          <li><a href="https://trac.edgewall.org/wiki/TitleIndex">Index</a></li>
+          <li class="last"><a href="https://trac.edgewall.org/wiki/TracInstall?action=history">History</a></li>
+        </ul>
+        <hr>
+      </div>
+
+      
+
+      
+
+      <!-- # block content (placeholder in theme.html) -->
+    <div id="content" class="wiki narrow">
+
+      <div class="wikipage searchable">
+        <div id="wikipage" class="trac-content borderless"><span id="trac-wiki-expander"></span><div class="wikiextras box shadow icon information yellow"><p>
+This page documents the 1.4 (latest stable) release.
+Documentation for other releases can be found
+<a class="wiki" href="https://trac.edgewall.org/wiki/TitleIndex#TracGuide:BackupandTranslations">here</a>.
+</p>
+</div><h1 class="section" id="TracInstallationGuidefor1.4">Trac Installation Guide for 1.4<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#TracInstallationGuidefor1.4" title="Link to this section"> ¶</a></h1>
+<p>
+</p><div class="wiki-toc"><h4>Table of Contents</h4><ul><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracGuide">Index</a></li><li class="active"><a class="False" href="https://trac.edgewall.org/wiki/TracInstall">Installation</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracInterfaceCustomization">Customization</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracPlugins">Plugins</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracUpgrade">Upgrading</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracIni">Configuration</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracAdmin">Administration</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracBackup">Backup</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracLogging">Logging</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracPermissions">Permissions</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracWiki">The Wiki</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/WikiFormatting">Wiki Formatting</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracTimeline">Timeline</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracBrowser">Repository Browser</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracRevisionLog">Revision Log</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracChangeset">Changesets</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracTickets">Tickets</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracWorkflow">Workflow</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracRoadmap">Roadmap</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracQuery">Ticket Queries</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracBatchModify">Batch Modify</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracReports">Reports</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracRss">RSS Support</a></li><li class="False"><a class="False" href="https://trac.edgewall.org/wiki/TracNotification">Notification</a></li></ul></div><p>
+</p>
+<div class="wiki-toc trac-nav" style="clear:both">
+<h4>Languages:</h4>
+<ul><li><strong>English</strong>
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TranslationRu/TracInstall">Русский</a>
+</li></ul>
+</div><p>
+</p>
+<p>
+Trac is written in the Python programming language and needs a database, <a class="ext-link" href="https://sqlite.org/"><span class="icon">​</span>SQLite</a>, <a class="ext-link" href="https://www.postgresql.org/"><span class="icon">​</span>PostgreSQL</a>, or <a class="ext-link" href="https://mysql.com/"><span class="icon">​</span>MySQL</a>. For HTML rendering, Trac uses the <a class="ext-link" href="https://jinja.palletsprojects.com/"><span class="icon">​</span>Jinja2</a> templating system, though Genshi templates are supported until Trac 1.5.1.
+</p>
+<p>
+Trac can also be localized, and there is probably a translation available in your language. If you want to use the Trac interface in other languages, then make sure you have installed the optional package <a class="wiki" href="https://trac.edgewall.org/wiki/TracInstall#OtherPythonPackages">Babel</a>. Pay attention to the extra steps for localization support in the <a class="wiki" href="https://trac.edgewall.org/wiki/TracInstall#InstallingTrac">Installing Trac</a> section below. Lacking Babel, you will only get the default English version.
+</p>
+<p>
+If you're interested in contributing new translations for other languages or enhancing the existing translations, please have a look at <a href="https://trac.edgewall.org/intertrac/wiki%3ATracL10N" title="wiki:TracL10N in The Trac Project">TracL10N</a>.
+</p>
+<p>
+What follows are generic instructions for installing and setting up Trac. While you may find instructions for installing Trac on specific systems at <a href="https://trac.edgewall.org/intertrac/TracInstallPlatforms" title="TracInstallPlatforms in The Trac Project">TracInstallPlatforms</a>, please <strong>first read through these general instructions</strong> to get a good understanding of the tasks involved.
+</p>
+<p>
+</p><h4 class="section">Installation Steps</h4>
+    <ol>
+      <li>
+        <a href="https://trac.edgewall.org/wiki/TracInstall#Dependencies">Dependencies</a>
+        <ol>
+          <li>
+            <a href="https://trac.edgewall.org/wiki/TracInstall#MandatoryDependencies">Mandatory Dependencies</a>
+          </li>
+          <li>
+            <a href="https://trac.edgewall.org/wiki/TracInstall#OptionalDependencies">Optional Dependencies</a>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <a href="https://trac.edgewall.org/wiki/TracInstall#InstallingTrac">Installing Trac</a>
+        <ol>
+          <li>
+            <a href="https://trac.edgewall.org/wiki/TracInstall#Usingpip">Using <code>pip</code></a>
+          </li>
+          <li>
+            <a href="https://trac.edgewall.org/wiki/TracInstall#Usinginstaller">Using installer</a>
+          </li>
+          <li>
+            <a href="https://trac.edgewall.org/wiki/TracInstall#Usingpackagemanager">Using package manager</a>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <a href="https://trac.edgewall.org/wiki/TracInstall#CreatingaProjectEnvironment">Creating a Project Environment</a>
+      </li>
+      <li>
+        <a href="https://trac.edgewall.org/wiki/TracInstall#DeployingTrac">Deploying Trac</a>
+        <ol>
+          <li>
+            <a href="https://trac.edgewall.org/wiki/TracInstall#RunningtheStandaloneServer">Running the Standalone Server</a>
+          </li>
+          <li>
+            <a href="https://trac.edgewall.org/wiki/TracInstall#RunningTraconaWebServer">Running Trac on a Web Server</a>
+          </li>
+        </ol>
+      </li>
+      <li>
+        <a href="https://trac.edgewall.org/wiki/TracInstall#ConfiguringAuthentication">Configuring Authentication</a>
+      </li>
+      <li>
+        <a href="https://trac.edgewall.org/wiki/TracInstall#Grantingadminrightstotheadminuser">Granting admin rights to the admin user</a>
+      </li>
+      <li>
+        <a href="https://trac.edgewall.org/wiki/TracInstall#ConfiguringTrac">Configuring Trac</a>
+      </li>
+      <li>
+        <a href="https://trac.edgewall.org/wiki/TracInstall#UsingTrac">Using Trac</a>
+      </li>
+    </ol>
+
+<p></p>
+<h2 class="section" id="Dependencies">Dependencies<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#Dependencies" title="Link to this section"> ¶</a></h2>
+<h3 class="section" id="MandatoryDependencies">Mandatory Dependencies<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#MandatoryDependencies" title="Link to this section"> ¶</a></h3>
+<p>
+To install Trac, the following software packages must be installed:
+</p>
+<ul><li><a class="ext-link" href="https://www.python.org/"><span class="icon">​</span>Python</a>, version ≥ 2.7 and &lt; 3.0
+(note that we dropped the support for Python 2.6 in this release)
+</li><li><a class="ext-link" href="https://pypi.org/project/setuptools"><span class="icon">​</span>setuptools</a>, version ≥ 0.6
+</li><li><a class="ext-link" href="https://pypi.org/project/Jinja2"><span class="icon">​</span>Jinja2</a>, version ≥ 2.9.3
+</li></ul><div class="wikipage" style="border: 1pt dotted; margin: 1em"><p>
+<strong>Setuptools Warning:</strong> If the version of your setuptools is in the range 5.4 through 5.6, the environment variable <code>PKG_RESOURCES_CACHE_ZIP_MANIFESTS</code> must be set in order to avoid significant performance degradation. More information may be found in <a class="wiki" href="https://trac.edgewall.org/wiki/TracInstall#DeployingTrac">Deploying Trac</a>.
+</p>
+</div><p>
+You also need a database system and the corresponding Python bindings. The database can be either SQLite, PostgreSQL or MySQL.
+</p>
+<h4 class="section" id="ForSQLite">For the SQLite database<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#ForSQLite" title="Link to this section"> ¶</a></h4>
+<p>
+You already have the SQLite database bindings bundled with the standard distribution of Python (the <code>sqlite3</code> module).
+</p>
+<p>
+Optionally, you may install a newer version of <a class="ext-link" href="https://pypi.org/project/pysqlite"><span class="icon">​</span>pysqlite</a> than the one provided by the Python distribution. See <a href="https://trac.edgewall.org/intertrac/PySqlite%23ThePysqlite2bindings" title="PySqlite#ThePysqlite2bindings in The Trac Project">PySqlite</a> for details.
+</p>
+<h4 class="section" id="ForPostgreSQL">For the PostgreSQL database<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#ForPostgreSQL" title="Link to this section"> ¶</a></h4>
+<p>
+You need to install the database and its Python bindings:
+</p>
+<ul><li><a class="ext-link" href="https://www.postgresql.org/"><span class="icon">​</span>PostgreSQL</a>, version 9.1 or later
+</li><li><a class="ext-link" href="https://pypi.org/project/psycopg2"><span class="icon">​</span>psycopg2</a>, version 2.0 or later
+</li></ul><p>
+See <a href="https://trac.edgewall.org/intertrac/DatabaseBackend%23Postgresql" title="DatabaseBackend#Postgresql in The Trac Project">DatabaseBackend</a> for details.
+</p>
+<h4 class="section" id="ForMySQL">For the MySQL database<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#ForMySQL" title="Link to this section"> ¶</a></h4>
+<p>
+Trac works well with MySQL, provided you use the following:
+</p>
+<ul><li><a class="ext-link" href="https://mysql.com/"><span class="icon">​</span>MySQL</a>, version 5.0 or later
+</li><li><a class="ext-link" href="https://pypi.org/project/PyMySQL"><span class="icon">​</span>PyMySQL</a>
+</li></ul><p>
+Given the caveats and known issues surrounding MySQL, read carefully the <a href="https://trac.edgewall.org/intertrac/MySqlDb" title="MySqlDb in The Trac Project">MySqlDb</a> page before creating the database.
+</p>
+<h3 class="section" id="OptionalDependencies">Optional Dependencies<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#OptionalDependencies" title="Link to this section"> ¶</a></h3>
+<h4 class="section" id="Subversion">Subversion<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#Subversion" title="Link to this section"> ¶</a></h4>
+<p>
+<a class="ext-link" href="https://subversion.apache.org/"><span class="icon">​</span>Subversion</a>, 1.6.x or later and the <strong><em>corresponding</em></strong> Python bindings.
+</p>
+<p>
+There are <a class="ext-link" href="https://subversion.apache.org/packages.html"><span class="icon">​</span>pre-compiled SWIG bindings</a> available for various platforms. See <a href="https://trac.edgewall.org/intertrac/TracSubversion%23GettingSubversion" title="TracSubversion#GettingSubversion in The Trac Project">getting Subversion</a> for more information.
+</p>
+<div class="wikipage" style="border: 1pt dotted; margin: 1em"><p>
+<strong>Note:</strong>
+</p>
+<ul><li>Trac <strong>doesn't</strong> use <a class="ext-link" href="https://pypi.org/project/PySVN"><span class="icon">​</span>PySVN</a>, nor does it work yet with the newer <code>ctype</code>-style bindings.
+</li><li>If using Subversion, Trac must be installed on the <strong>same machine</strong>. Remote repositories are <a href="https://trac.edgewall.org/intertrac/ticket%3A493" title="ticket:493 in The Trac Project">not supported</a>.
+</li></ul></div><p>
+For troubleshooting information, see the <a href="https://trac.edgewall.org/intertrac/TracSubversion%23Troubleshooting" title="TracSubversion#Troubleshooting in The Trac Project">TracSubversion</a> page.
+</p>
+<h4 class="section" id="Git">Git<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#Git" title="Link to this section"> ¶</a></h4>
+<p>
+<a class="ext-link" href="https://git-scm.com/"><span class="icon">​</span>Git</a> 1.5.6 or later is supported. More information is available on the <a href="https://trac.edgewall.org/intertrac/TracGit" title="TracGit in The Trac Project">TracGit</a> page.
+</p>
+<h4 class="section" id="OtherVersionControlSystems">Other Version Control Systems<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#OtherVersionControlSystems" title="Link to this section"> ¶</a></h4>
+<p>
+Support for other version control systems is provided via third-party plugins. See <a href="https://trac.edgewall.org/intertrac/PluginList%23VersionControlSystems" title="PluginList#VersionControlSystems in The Trac Project">PluginList#VersionControlSystems</a> and <a href="https://trac.edgewall.org/intertrac/VersionControlSystem" title="VersionControlSystem in The Trac Project">VersionControlSystem</a>.
+</p>
+<h4 class="section" id="WebServer">Web Server<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#WebServer" title="Link to this section"> ¶</a></h4>
+<p>
+A web server is optional because Trac is shipped with a server included, see the <a class="wiki" href="https://trac.edgewall.org/wiki/TracInstall#RunningtheStandaloneServer">Running the Standalone Server</a> section below.
+</p>
+<p>
+Alternatively you can configure Trac to run in any of the following environments:
+</p>
+<ul><li><a class="ext-link" href="https://httpd.apache.org/"><span class="icon">​</span>Apache</a> with
+<ul><li><a class="ext-link" href="https://github.com/GrahamDumpleton/mod_wsgi"><span class="icon">​</span>mod_wsgi</a>, see <a class="wiki" href="https://trac.edgewall.org/wiki/TracModWSGI">TracModWSGI</a> and
+<a class="ext-link" href="https://code.google.com/p/modwsgi/wiki/IntegrationWithTrac"><span class="icon">​</span>ModWSGI IntegrationWithTrac</a>.
+</li><li><a class="ext-link" href="https://modpython.org/"><span class="icon">​</span>mod_python 3.5.0</a>, see <a class="wiki" href="https://trac.edgewall.org/wiki/TracModPython">TracModPython</a>
+</li></ul></li><li>a <a class="ext-link" href="https://fastcgi-archives.github.io/"><span class="icon">​</span>FastCGI</a>-capable web server (see <a class="wiki" href="https://trac.edgewall.org/wiki/TracFastCgi">TracFastCgi</a>)
+</li><li>an <a class="ext-link" href="https://tomcat.apache.org/connectors-doc/ajp/ajpv13a.html"><span class="icon">​</span>AJP</a>-capable web
+server (see <a href="https://trac.edgewall.org/intertrac/TracOnWindowsIisAjp" title="TracOnWindowsIisAjp in The Trac Project">TracOnWindowsIisAjp</a>)
+</li><li>Microsoft IIS with FastCGI and a FastCGI-to-WSGI gateway (see <a href="https://trac.edgewall.org/intertrac/CookBook/Installation/TracOnWindowsIisWfastcgi" title="CookBook/Installation/TracOnWindowsIisWfastcgi in The Trac Project">IIS with FastCGI</a>)
+</li><li>a CGI-capable web server (see <a class="wiki" href="https://trac.edgewall.org/wiki/TracCgi">TracCgi</a>), <strong>but usage of Trac as a cgi script
+is highly discouraged</strong>, better use one of the previous options.
+</li></ul><h4 class="section" id="OtherPythonPackages">Other Python Packages<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#OtherPythonPackages" title="Link to this section"> ¶</a></h4>
+<ul><li><a class="ext-link" href="http://babel.pocoo.org/"><span class="icon">​</span>Babel</a>, version 0.9.6 or ≥ 1.3,
+needed for localization support
+</li><li><a class="ext-link" href="http://pytz.sourceforge.net/"><span class="icon">​</span>pytz</a> to get a complete list of time zones,
+otherwise Trac will fall back on a shorter list from
+an internal time zone implementation. Installing Babel
+will install pytz.
+</li><li><a class="ext-link" href="http://docutils.sourceforge.net/"><span class="icon">​</span>docutils</a>, version ≥ 0.3.9
+for <a class="wiki" href="https://trac.edgewall.org/wiki/WikiRestructuredText">WikiRestructuredText</a>.
+</li><li><a class="ext-link" href="http://pygments.org/"><span class="icon">​</span>Pygments</a> for
+<a class="wiki" href="https://trac.edgewall.org/wiki/TracSyntaxColoring">syntax highlighting</a>.
+</li><li><a class="ext-link" href="https://pypi.org/project/textile"><span class="icon">​</span>Textile</a> for rendering the <a class="ext-link" href="https://github.com/textile/python-textile"><span class="icon">​</span>Textile markup language</a>.
+</li><li><a class="ext-link" href="https://pypi.org/project/passlib"><span class="icon">​</span>passlib</a> on Windows to decode <a class="wiki" href="https://trac.edgewall.org/wiki/TracStandalone#BasicAuthorization:Usingahtpasswdpasswordfile">htpasswd formats</a> other than <code>SHA-1</code>.
+</li><li><a class="ext-link" href="https://pypi.org/project/pyreadline"><span class="icon">​</span>pyreadline</a> on Windows for trac-admin <a class="wiki" href="https://trac.edgewall.org/wiki/TracAdmin#InteractiveMode">command completion</a>.
+</li></ul><div class="wikipage" style="border: 1pt dotted; margin: 1em"><p>
+<strong>Attention</strong>: The available versions of these dependencies are not necessarily interchangeable, so please pay attention to the version numbers. If you are having trouble getting Trac to work, please double-check all the dependencies before asking for help on the <a href="https://trac.edgewall.org/intertrac/MailingList" title="MailingList in The Trac Project">MailingList</a> or <a href="https://trac.edgewall.org/intertrac/IrcChannel" title="IrcChannel in The Trac Project">IrcChannel</a>.
+</p>
+</div><p>
+Please refer to the documentation of these packages to find out how they are best installed. In addition, most of the <a href="https://trac.edgewall.org/intertrac/TracInstallPlatforms" title="TracInstallPlatforms in The Trac Project">platform-specific instructions</a> also describe the installation of the dependencies. Keep in mind however that the information there <em>probably concern older versions of Trac than the one you're installing</em>.
+</p>
+<h2 class="section" id="InstallingTrac">Installing Trac<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#InstallingTrac" title="Link to this section"> ¶</a></h2>
+<p>
+The <a class="wiki" href="https://trac.edgewall.org/wiki/TracAdmin">trac-admin</a> command-line tool, used to create and maintain <a class="wiki" href="https://trac.edgewall.org/wiki/TracEnvironment">project environments</a>, as well as the <a class="wiki" href="https://trac.edgewall.org/wiki/TracStandalone">tracd</a> standalone server are installed along with Trac. There are several methods for installing Trac.
+</p>
+<p>
+It is assumed throughout this guide that you have elevated permissions as the <code>root</code> user or by prefixing commands with <code>sudo</code>. The umask <code>0002</code> should be used for a typical installation on a Unix-based platform.
+</p>
+<h3 class="section" id="Usingpip">Using <code>pip</code><a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#Usingpip" title="Link to this section"> ¶</a></h3>
+<p>
+<code>pip</code> is the modern Python package manager and is included in Python 2.7.9 and later. Use <a class="ext-link" href="https://bootstrap.pypa.io/pip/2.7/get-pip.py"><span class="icon">​</span>get-pip.py</a> to install <code>pip</code> for earlier versions.
+</p>
+<div class="wiki-code"><div class="code"><pre>$ pip install Trac
+</pre></div></div><p>
+<code>pip</code> will automatically resolve the <em>required</em> dependencies (Jinja2 and setuptools) and download the latest packages from pypi.org.
+</p>
+<p>
+You can also install directly from a source package. You can obtain the source in a tar or zip from the <a href="https://trac.edgewall.org/intertrac/TracDownload" title="TracDownload in The Trac Project">TracDownload</a> page. After extracting the archive, change to the directory containing <code>setup.py</code> and run:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ pip install .
+</pre></div></div><p>
+<code>pip</code> supports numerous other install mechanisms. It can be passed the URL of an archive or other download location. Here are some examples:
+</p>
+<ul><li>Install the latest development version from a tar archive:
+<div class="wiki-code"><div class="code"><pre>$ pip install https://download.edgewall.org/trac/Trac-latest-dev.tar.gz
+</pre></div></div></li><li>Install the unreleased 1.2-stable from subversion:
+<div class="wiki-code"><div class="code"><pre>$ pip install svn+https://svn.edgewall.org/repos/trac/branches/1.2-stable
+</pre></div></div></li><li>Install the latest development preview (<em>not recommended for production installs</em>):
+<div class="wiki-code"><div class="code"><pre>$ pip install --find-links<span class="o">=</span>https://trac.edgewall.org/wiki/TracDownload Trac
+</pre></div></div></li></ul><p>
+The optional dependencies can be installed from PyPI using <code>pip</code>:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ pip install babel docutils pygments textile
+</pre></div></div><p>
+The optional dependencies can alternatively be
+specified using the <code>extras</code> keys in the setup file:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ pip install Trac<span class="o">[</span>babel,rest,pygments,textile<span class="o">]</span>
+</pre></div></div><p>
+<code>rest</code> is the extra that installs the <code>docutils</code>
+dependency.
+</p>
+<p>
+Include <code>mysql</code> or <code>psycopg2-binary</code> in the
+list if using the MySQL or PostgreSQL database.
+</p>
+<p>
+Additionally, you can install several Trac plugins from PyPI (listed <a class="ext-link" href="https://pypi.org/search/?c=Framework+%3A%3A+Trac"><span class="icon">​</span>here</a>) using pip. See <a class="wiki" href="https://trac.edgewall.org/wiki/TracPlugins">TracPlugins</a> for more information.
+</p>
+<h3 class="section" id="Usinginstaller">Using installer<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#Usinginstaller" title="Link to this section"> ¶</a></h3>
+<p>
+On Windows, Trac can be installed using the exe installers available on the <a href="https://trac.edgewall.org/intertrac/TracDownload" title="TracDownload in The Trac Project">TracDownload</a> page. Installers are available for the 32-bit and 64-bit versions of Python. Make sure to use the installer that matches the architecture of your Python installation.
+</p>
+<h3 class="section" id="Usingpackagemanager">Using package manager<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#Usingpackagemanager" title="Link to this section"> ¶</a></h3>
+<p>
+Trac may be available in your platform's package repository. However, your package manager may not provide the latest release of Trac.
+</p>
+<h2 class="section" id="CreatingaProjectEnvironment">Creating a Project Environment<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#CreatingaProjectEnvironment" title="Link to this section"> ¶</a></h2>
+<p>
+A <a class="wiki" href="https://trac.edgewall.org/wiki/TracEnvironment">Trac environment</a> is the backend where Trac stores information like wiki pages, tickets, reports, settings, etc. An environment is a directory that contains a human-readable <a class="wiki" href="https://trac.edgewall.org/wiki/TracIni">configuration file</a>, and other files and directories.
+</p>
+<p>
+A new environment is created using <a class="wiki" href="https://trac.edgewall.org/wiki/TracAdmin">trac-admin</a>:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ trac-admin /path/to/myproject initenv
+</pre></div></div><p>
+<a class="wiki" href="https://trac.edgewall.org/wiki/TracAdmin">trac-admin</a> will prompt you for the information it needs to create the environment: the name of the project and the <a class="wiki" href="https://trac.edgewall.org/wiki/TracEnvironment#DatabaseConnectionStrings">database connection string</a>. If you're not sure what to specify for any of these options, just press <code>&lt;Enter&gt;</code> to use the default value.
+</p>
+<p>
+Using the default database connection string will always work as long as you have SQLite installed. For the other <a href="https://trac.edgewall.org/intertrac/DatabaseBackend" title="DatabaseBackend in The Trac Project">database backends</a> you should plan ahead and already have a database ready to use at this point.
+</p>
+<p>
+Also note that the values you specify here can be changed later using <a class="wiki" href="https://trac.edgewall.org/wiki/TracAdmin">TracAdmin</a> or directly editing the <a class="wiki" href="https://trac.edgewall.org/wiki/TracIni">conf/trac.ini</a> configuration file.
+</p>
+<p>
+Finally, make sure the user account under which the web front-end runs will have <strong>write permissions</strong> to the environment directory and all the files inside. This will be the case if you run <code>trac-admin ... initenv</code> as this user. If not, you should set the correct user afterwards. For example on Linux, with the web server running as user <code>apache</code> and group <code>apache</code>, enter:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ chown -R apache:apache /path/to/myproject
+</pre></div></div><p>
+The actual username and groupname of the apache server may not be exactly <code>apache</code>, and are specified in the Apache configuration file by the directives <code>User</code> and <code>Group</code> (if Apache <code>httpd</code> is what you use).
+</p>
+<div class="important"><p>
+<strong>Warning:</strong> Please only use ASCII-characters for account name and project path, unicode characters are not supported there.
+</p>
+</div><h2 class="section" id="DeployingTrac">Deploying Trac<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#DeployingTrac" title="Link to this section"> ¶</a></h2>
+<div class="wikipage" style="border: 1pt dotted; margin: 1em"><p>
+<strong>Setuptools Warning:</strong> If the version of your setuptools is in the range 5.4 through 5.6, the environment variable <code>PKG_RESOURCES_CACHE_ZIP_MANIFESTS</code> must be set in order to avoid significant performance degradation.
+</p>
+<p>
+If running <code>tracd</code>, the environment variable can be set system-wide or for just the user that runs the <code>tracd</code> process. There are several ways to accomplish this in addition to what is discussed here, and depending on the distribution of your OS.
+</p>
+<p>
+To be effective system-wide a shell script with the <code>export</code> statement may be added to <code>/etc/profile.d</code>. To be effective for a user session the <code>export</code> statement may be added to <code>~/.profile</code>.
+</p>
+<div class="wiki-code"><div class="code"><pre><span class="nb">export</span> <span class="nv">PKG_RESOURCES_CACHE_ZIP_MANIFESTS</span><span class="o">=</span><span class="m">1</span>
+</pre></div></div><p>
+Alternatively, the variable can be set in the shell before executing <code>tracd</code>:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ <span class="nv">PKG_RESOURCES_CACHE_ZIP_MANIFESTS</span><span class="o">=</span><span class="m">1</span> tracd --port <span class="m">8000</span> /path/to/myproject
+</pre></div></div><p>
+If running the Apache web server, Ubuntu/Debian users should add the <code>export</code> statement to <code>/etc/apache2/envvars</code>. RedHat/CentOS/Fedora should can add the <code>export</code> statement to <code>/etc/sysconfig/httpd</code>.
+</p>
+</div><h3 class="section" id="RunningtheStandaloneServer">Running the Standalone Server<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#RunningtheStandaloneServer" title="Link to this section"> ¶</a></h3>
+<p>
+After having created a Trac environment, you can easily try the web interface by running the standalone server <a class="wiki" href="https://trac.edgewall.org/wiki/TracStandalone">tracd</a>:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ tracd --port <span class="m">8000</span> /path/to/myproject
+</pre></div></div><p>
+Then, open a browser and visit <code>http://localhost:8000/</code>. You should get a simple listing of all environments that <code>tracd</code> knows about. Follow the link to the environment you just created, and you should see Trac in action. If you only plan on managing a single project with Trac you can have the standalone server skip the environment list by starting it like this:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ tracd -s --port <span class="m">8000</span> /path/to/myproject
+</pre></div></div><h3 class="section" id="RunningTraconaWebServer">Running Trac on a Web Server<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#RunningTraconaWebServer" title="Link to this section"> ¶</a></h3>
+<p>
+Trac provides various options for connecting to a "real" web server:
+</p>
+<ul><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracFastCgi">FastCGI</a>
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracModWSGI">Apache with mod_wsgi</a>
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracModPython">Apache with mod_python</a>
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracCgi">CGI</a> <em>(should not be used, as the performance is far from optimal)</em>
+</li></ul><p>
+Trac also supports <a href="https://trac.edgewall.org/intertrac/TracOnWindowsIisAjp" title="TracOnWindowsIisAjp in The Trac Project">AJP</a> which may be your choice if you want to connect to IIS. Other deployment scenarios are possible: <a href="https://trac.edgewall.org/intertrac/TracNginxRecipe" title="TracNginxRecipe in The Trac Project">nginx</a>, <a class="ext-link" href="https://uwsgi-docs.readthedocs.io/en/latest/#Traconapacheinasub-uri"><span class="icon">​</span>uwsgi</a>, <a href="https://trac.edgewall.org/intertrac/TracOnWindowsIisIsapi" title="TracOnWindowsIisIsapi in The Trac Project">Isapi-wsgi</a> etc.
+</p>
+<h4 class="section" id="cgi-bin">Generating the Trac cgi-bin directory<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#cgi-bin" title="Link to this section"> ¶</a></h4>
+<p>
+Application scripts for CGI, FastCGI and mod-wsgi can be generated using the <a class="wiki" href="https://trac.edgewall.org/wiki/TracAdmin">trac-admin</a> <code>deploy</code> command:
+</p><pre class="wiki">deploy &lt;directory&gt;
+
+    Extract static resources from Trac and all plugins
+
+</pre>
+<p></p>
+<p>
+Grant the web server execution right on scripts in the <code>cgi-bin</code> directory.
+</p>
+<p>
+For example, the following yields a typical directory structure:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ mkdir -p /var/trac
+$ trac-admin /var/trac/&lt;project&gt; initenv
+$ trac-admin /var/trac/&lt;project&gt; deploy /var/www
+$ ls /var/www
+cgi-bin htdocs
+$ chmod ugo+x /var/www/cgi-bin/*
+</pre></div></div><h4 class="section" id="MappingStaticResources">Mapping Static Resources<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#MappingStaticResources" title="Link to this section"> ¶</a></h4>
+<p>
+Without additional configuration, Trac will handle requests for static resources such as stylesheets and images. For anything other than a <a class="wiki" href="https://trac.edgewall.org/wiki/TracStandalone">TracStandalone</a> deployment, this is not optimal as the web server can be set up to directly serve the static resources. For CGI setup, this is <strong>highly undesirable</strong> as it causes abysmal performance.
+</p>
+<p>
+Web servers such as <a class="ext-link" href="https://httpd.apache.org/"><span class="icon">​</span>Apache</a> allow you to create <em>Aliases</em> to resources, giving them a virtual URL that doesn't necessarily reflect their location on the file system. We can map requests for static resources directly to directories on the file system, to avoid Trac processing the requests.
+</p>
+<p>
+There are two primary URL paths for static resources: <code>/chrome/common</code> and <code>/chrome/site</code>. Plugins can add their own resources, usually accessible at the <code>/chrome/&lt;plugin&gt;</code> path.
+</p>
+<p>
+A single <code>/chrome</code> alias can used if the static resources are extracted for all plugins. This means that the <code>deploy</code> command (discussed in the previous section) must be executed after installing or updating a plugin that provides static resources, or after modifying resources in the <code>$env/htdocs</code> directory. This is probably appropriate for most installations but may not be what you want if, for example, you wish to upload plugins through the <em>Plugins</em> administration page.
+</p>
+<p>
+The <code>deploy</code> command creates an <code>htdocs</code> directory with:
+</p>
+<ul><li><code>common/</code> - the static resources of Trac
+</li><li><code>site/</code> - a copy of the environment's <code>htdocs/</code> directory
+</li><li><code>shared</code> - the static resources shared by multiple Trac environments, with a location defined by the <code>[inherit]</code> <code>htdocs_dir</code> option
+</li><li><code>&lt;plugin&gt;/</code> - one directory for each resource directory provided by the plugins enabled for this environment
+</li></ul><p>
+The example that follows will create a single <code>/chrome</code> alias. If that isn't the correct approach for your installation you simply need to create more specific aliases:
+</p>
+<div class="wiki-code"><div class="code"><pre><span class="nb">Alias</span> <span class="sx">/trac/chrome/common</span> <span class="sx">/path/to/trac/htdocs/common</span>
+<span class="nb">Alias</span> <span class="sx">/trac/chrome/site</span> <span class="sx">/path/to/trac/htdocs/site</span>
+<span class="nb">Alias</span> <span class="sx">/trac/chrome/shared</span> <span class="sx">/path/to/trac/htdocs/shared</span>
+<span class="nb">Alias</span> <span class="sx">/trac/chrome/</span>&lt;plugin&gt; <span class="sx">/path/to/trac/htdocs/</span>&lt;plugin&gt;
+</pre></div></div><h5 class="section" id="ScriptAlias-example">Example: Apache and <code>ScriptAlias</code><a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#ScriptAlias-example" title="Link to this section"> ¶</a></h5>
+<p>
+Assuming the deployment has been done this way:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ trac-admin /var/trac/&lt;project&gt; deploy /var/www/trac
+</pre></div></div><p>
+Add the following snippet to Apache configuration, changing paths to match your deployment. The snippet must be placed <em>before</em> the <code>ScriptAlias</code> or <code>WSGIScriptAlias</code> directive, because those directives map all requests to the Trac application:
+</p>
+<div class="wiki-code"><div class="code"><pre><span class="nb">Alias</span> <span class="sx">/trac/chrome</span> <span class="sx">/var/www/trac/htdocs</span>
+
+<span class="nt">&lt;Directory</span> <span class="s">"/var/www/trac/htdocs"</span><span class="nt">&gt;</span>
+  <span class="c"># For Apache 2.2</span>
+  <span class="nt">&lt;IfModule</span> <span class="s">!mod_authz_core.c</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> allow,deny
+    <span class="nb">Allow</span> from <span class="k">all</span>
+  <span class="nt">&lt;/IfModule&gt;</span>
+  <span class="c"># For Apache 2.4</span>
+  <span class="nt">&lt;IfModule</span> <span class="s">mod_authz_core.c</span><span class="nt">&gt;</span>
+    <span class="nb">Require</span> <span class="k">all</span> granted
+  <span class="nt">&lt;/IfModule&gt;</span>
+<span class="nt">&lt;/Directory&gt;</span>
+</pre></div></div><p>
+If using mod_python, add this too, otherwise the alias will be ignored:
+</p>
+<div class="wiki-code"><div class="code"><pre><span class="nt">&lt;Location</span> <span class="s">"/trac/chrome/common"</span><span class="nt">&gt;</span>
+  <span class="nb">SetHandler</span> <span class="k">None</span>
+<span class="nt">&lt;/Location&gt;</span>
+</pre></div></div><p>
+Alternatively, if you wish to serve static resources directly from your project's <code>htdocs</code> directory rather than the location to which the files are extracted with the <code>deploy</code> command, you can configure Apache to serve those resources. Again, put this <em>before</em> the <code>ScriptAlias</code> or <code>WSGIScriptAlias</code> for the .*cgi scripts, and adjust names and locations to match your installation:
+</p>
+<div class="wiki-code"><div class="code"><pre><span class="nb">Alias</span> <span class="sx">/trac/chrome/site</span> <span class="sx">/path/to/projectenv/htdocs</span>
+
+<span class="nt">&lt;Directory</span> <span class="s">"/path/to/projectenv/htdocs"</span><span class="nt">&gt;</span>
+  <span class="c"># For Apache 2.2</span>
+  <span class="nt">&lt;IfModule</span> <span class="s">!mod_authz_core.c</span><span class="nt">&gt;</span>
+    <span class="nb">Order</span> allow,deny
+    <span class="nb">Allow</span> from <span class="k">all</span>
+  <span class="nt">&lt;/IfModule&gt;</span>
+  <span class="c"># For Apache 2.4</span>
+  <span class="nt">&lt;IfModule</span> <span class="s">mod_authz_core.c</span><span class="nt">&gt;</span>
+    <span class="nb">Require</span> <span class="k">all</span> granted
+  <span class="nt">&lt;/IfModule&gt;</span>
+<span class="nt">&lt;/Directory&gt;</span>
+</pre></div></div><p>
+Another alternative to aliasing <code>/trac/chrome/common</code> is having Trac generate direct links for those static resources (and only those), using the <a class="wiki" href="https://trac.edgewall.org/wiki/TracIni#trac-htdocs_location-option">trac.htdocs_location</a> configuration setting:
+</p>
+<div class="wiki-code"><div class="code"><pre><span class="k">[trac]</span>
+<span class="na">htdocs_location</span> <span class="o">=</span> <span class="s">http://static.example.org/trac-common/</span>
+</pre></div></div><p>
+Note that this makes it easy to have a dedicated domain serve those static resources, preferentially cookie-less.
+</p>
+<p>
+Of course, you still need to make the Trac <code>htdocs/common</code> directory available through the web server at the specified URL, for example by copying (or linking) the directory into the document root of the web server:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ ln -s /path/to/trac/htdocs/common /var/www/static.example.org/trac-common
+</pre></div></div><h4 class="section" id="SettingupthePluginCache">Setting up the Plugin Cache<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#SettingupthePluginCache" title="Link to this section"> ¶</a></h4>
+<p>
+Some Python plugins need to be extracted to a cache directory. By default the cache resides in the home directory of the current user. When running Trac on a Web Server as a dedicated user (which is highly recommended) who has no home directory, this might prevent the plugins from starting. To override the cache location you can set the <code>PYTHON_EGG_CACHE</code> environment variable. Refer to your server documentation for detailed instructions on how to set environment variables.
+</p>
+<h2 class="section" id="ConfiguringAuthentication">Configuring Authentication<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#ConfiguringAuthentication" title="Link to this section"> ¶</a></h2>
+<p>
+Trac uses HTTP authentication. You'll need to configure your webserver to request authentication when the <code>.../login</code> URL is hit (the virtual path of the "login" button). Trac will automatically pick the <code>REMOTE_USER</code> variable up after you provide your credentials. Therefore, all user management goes through your web server configuration. Please consult the documentation of your web server for more info.
+</p>
+<p>
+The process of adding, removing, and configuring user accounts for authentication depends on the specific way you run Trac.
+</p>
+<p>
+Please refer to one of the following sections:
+</p>
+<ul><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracStandalone#UsingAuthentication">TracStandalone#UsingAuthentication</a> if you use the standalone server, <code>tracd</code>.
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracModWSGI#ConfiguringAuthentication">TracModWSGI#ConfiguringAuthentication</a> if you use the Apache web server, with any of its front end: <code>mod_wsgi</code>, <code>mod_python</code>, <code>mod_fcgi</code> or <code>mod_fastcgi</code>.
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracFastCgi">TracFastCgi</a> if you're using another web server with FCGI support (Cherokee, Lighttpd, LiteSpeed, nginx)
+</li></ul><p>
+<a href="https://trac.edgewall.org/intertrac/TracAuthenticationIntroduction" title="TracAuthenticationIntroduction in The Trac Project">TracAuthenticationIntroduction</a> also contains some useful information for beginners.
+</p>
+<h2 class="section" id="Grantingadminrightstotheadminuser">Granting admin rights to the admin user<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#Grantingadminrightstotheadminuser" title="Link to this section"> ¶</a></h2>
+<p>
+Grant admin rights to user admin:
+</p>
+<div class="wiki-code"><div class="code"><pre>$ trac-admin /path/to/myproject permission add admin TRAC_ADMIN
+</pre></div></div><p>
+This user will have an <em>Admin</em> navigation item that directs to pages for administering your Trac project.
+</p>
+<h2 class="section" id="ConfiguringTrac">Configuring Trac<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#ConfiguringTrac" title="Link to this section"> ¶</a></h2>
+<p>
+Configuration options are documented on the <a class="wiki" href="https://trac.edgewall.org/wiki/TracIni">TracIni</a> page.
+</p>
+<p>
+<a class="wiki" href="https://trac.edgewall.org/wiki/TracRepositoryAdmin">TracRepositoryAdmin</a> provides information on configuring version control repositories for your project.
+</p>
+<p>
+In addition to the optional version control backends, Trac provides several optional features that are disabled by default:
+</p>
+<ul><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracFineGrainedPermissions#AuthzPolicy">Fine-grained permission policy</a>
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracPermissions#CreatingNewPrivileges">Custom permissions</a>
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracTickets#deleter">Ticket deletion</a>
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracTickets#cloner">Ticket cloning</a>
+</li><li><a class="wiki" href="https://trac.edgewall.org/wiki/TracRepositoryAdmin#CommitTicketUpdater">Ticket changeset references</a>
+</li></ul><h2 class="section" id="UsingTrac">Using Trac<a class="anchor" href="https://trac.edgewall.org/wiki/TracInstall#UsingTrac" title="Link to this section"> ¶</a></h2>
+<p>
+Once you have your Trac site up and running, you should be able to create tickets, view the timeline, browse your version control repository if configured, etc.
+</p>
+<p>
+Keep in mind that <em>anonymous</em> (not logged in) users can by default access only a few of the features, in particular they will have a read-only access to the resources. You will need to configure authentication and grant additional <a class="wiki" href="https://trac.edgewall.org/wiki/TracPermissions">permissions</a> to authenticated users to see the full set of features.
+</p>
+<p>
+<em> Enjoy! </em>
+</p>
+<p>
+<a href="https://trac.edgewall.org/intertrac/TracTeam" title="TracTeam in The Trac Project">The Trac Team</a>
+</p>
+<hr>
+<p>
+See also: <a href="https://trac.edgewall.org/intertrac/TracInstallPlatforms" title="TracInstallPlatforms in The Trac Project">TracInstallPlatforms</a>, <a class="wiki" href="https://trac.edgewall.org/wiki/TracGuide">TracGuide</a>, <a class="wiki" href="https://trac.edgewall.org/wiki/TracUpgrade">TracUpgrade</a>
+</p>
+</div>
+        <div class="trac-modifiedby">
+          <span>
+            <a href="https://trac.edgewall.org/wiki/TracInstall?action=diff&amp;version=453" title="Version 453 by Jun Omae: Revised URL of modpython.">Last modified</a>
+ <a class="timeline" href="https://trac.edgewall.org/timeline?from=2024-09-25T08%3A38%3A53%2B02%3A00&amp;precision=second" title="See timeline at Sep 25, 2024, 8:38:53 AM">6 months ago</a>          </span>
+          <span class="trac-print">
+            Last modified on Sep 25, 2024, 8:38:53 AM
+          </span>
+        </div>
+      </div>
+
+
+
+
+
+<div id="attachments">
+</div>
+      <div class="buttons">
+        <form method="get" action="https://trac.edgewall.org/wiki/TracInstall" id="modifypage">
+          <div>
+            <input type="hidden" name="action" value="edit">
+            <input type="submit" value="Edit this page">
+          </div>
+        </form>
+
+
+
+
+<form method="get" action="https://trac.edgewall.org/attachment/wiki/TracInstall/" id="attachfile">
+  <div>
+    <input type="hidden" name="action" value="new">
+    <input type="submit" id="attachfilebutton" value="Attach file">
+  </div>
+</form>
+      </div>
+<div class="trac-help">
+  <strong>Note:</strong>
+ See   <a href="https://trac.edgewall.org/wiki/TracWiki">TracWiki</a>
+ for help on using the wiki.
+</div>
+    </div>
+        <!-- # block content (content inherited from layout.html) -->
+    <script>
+      jQuery.loadStyleSheet("/pygments/trac.css", "text/css");
+    </script>
+    <div id="altlinks">
+      <h3>Download in other formats:</h3>
+      <ul>
+        <li class="last first">
+          <a rel="nofollow" href="https://trac.edgewall.org/wiki/TracInstall?format=txt" class="">
+            Plain Text</a>
+        </li>
+      </ul>
+    </div>
+    <!-- # endblock content (content inherited from layout.html) -->
+
+      <!-- # endblock content (placeholder in theme.html) -->
+    </div>
+
+    <div id="footer"><hr>
+      <a id="tracpowered" href="https://trac.edgewall.org/"><img src="./TracInstall – The Trac Project_files/trac_logo_mini.png" height="30" width="107" alt="Trac Powered"></a>
+      <p class="left">
+Powered by         <a href="https://trac.edgewall.org/about"><strong>Trac 1.4.3</strong></a>
+        <br>
+ By         <a href="http://www.edgewall.org/">Edgewall Software</a>
+.      </p>
+      <p class="right">Visit the Trac open source project at<br><a href="https://trac.edgewall.org/">https://trac.edgewall.org/</a></p>
+    </div>
+    <!--   # include 'site_footer.html' (theme.html) -->
+<!-- site_footer_trac.html -->
+
+    </div><!-- #ew-content -->
+  </div>
+</div>
+<div id="ew-footer">
+  <p><a href="mailto:info@edgewall.com">info@edgewall.com</a></p>
+  <p>Copyright © 2003-2024 Edgewall Software. All rights reserved.</p>
+</div>
+
+<div id="right" style="">
+
+<div id="ohloh-badge">
+  <a href="https://www.openhub.net/p/trac">
+    <img src="./TracInstall – The Trac Project_files/widget.gif">
+  </a>
+</div>  <script type="text/javascript"><!--
+				     google_ad_client = "pub-3746245347013177";
+				     google_ad_width = 120;
+				     google_ad_height = 600;
+				     google_ad_format = "120x600_as";
+				     google_ad_channel ="9044578517";
+				     google_ad_type = "text_image";
+				     google_color_border = "8b8d8d";
+				     /*google_color_border = "6b6d6d";*/
+				     google_color_bg = "6b6d6d";
+				     /*google_color_bg = "4b4d4d";*/
+				     google_color_link = "336699";
+				     google_color_url = "E2B200";
+				     google_color_text = "8c8c8c";
+				     /*google_color_text = "cccccc";*/
+				     //--></script>
+  <script type="text/javascript" src="./TracInstall – The Trac Project_files/f(2).txt">
+  </script><ins class="adsbygoogle adsbygoogle-noablate" data-ad-channel="9044578517" data-ad-client="pub-3746245347013177" data-ad-format="120x600_as" data-ad-height="600" data-ad-type="text_image" data-ad-width="120" data-color-bg="6b6d6d" data-color-border="8b8d8d" data-color-link="336699" data-color-text="8c8c8c" data-color-url="E2B200" data-adsbygoogle-status="done" style="display: inline-block; width: 120px; height: 600px;" data-ad-status="unfilled"><div id="aswift_0_host" style="border: none; height: 600px; width: 120px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" browsingtopics="true" style="left:0;position:absolute;top:0;border:0;width:120px;height:600px;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="120" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="attribution-reporting; run-ad-auction" src="./TracInstall – The Trac Project_files/ads.html" data-google-container-id="a!1" tabindex="0" title="Advertisement" aria-label="Advertisement" data-load-complete="true"></iframe></div></ins>
+
+
+</div>
+<!-- /site_footer_trac.html -->    <!--   end of site_footer.html -->
+    <!-- # endblock body (content inherited from theme.html) -->
+   <ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_1_host" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_1" name="aswift_1" browsingtopics="true" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="attribution-reporting; run-ad-auction" src="./TracInstall – The Trac Project_files/ads(1).html" data-google-container-id="a!2" tabindex="0" title="Advertisement" aria-label="Advertisement" data-load-complete="true"></iframe></div></ins><div id="veepn-breach-alert"><template shadowrootmode="open"><style>.breach-popup{font-family:FigtreeVF,sans-serif;position:fixed;z-index:2147483638;text-rendering:optimizelegibility;top:0;left:0;right:0;pointer-events:none;padding-inline:16px;height:0;overflow:visible;color:#222e3a}.breach-popup *{box-sizing:border-box}.breach-popup__inner{background-color:#de4558;width:100%;border-radius:16px;margin-inline:auto;pointer-events:all;position:relative;transition:transform .25s ease-in-out,max-width .25s ease-in-out;transform:translateY(16px);max-height:calc(100svh - 80px);display:flex;flex-direction:column}.breach-popup__header{min-height:32px;display:flex;align-items:center;justify-content:space-between;column-gap:16px;padding:4px;cursor:pointer}.breach-popup__close{cursor:pointer;background-color:transparent;border-style:none;outline:none;display:flex;align-items:center;justify-content:center;width:24px;height:24px;flex-shrink:0;opacity:.5}.breach-popup__wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease-in-out;overflow:hidden}.breach-popup__content{overflow:hidden;opacity:0;transform:translateY(-10px)}.breach-popup--minimize .breach-popup__inner{max-width:485px;transform:translateY(-100%)}.breach-popup--collapse .breach-popup__inner{max-width:485px}.breach-popup--expand .breach-popup__inner{max-width:1120px}.breach-popup--expand .breach-popup__wrap{grid-template-rows:1fr}.breach-popup--expand .breach-popup__content{opacity:1;transform:translateY(0);transition:transform .25s ease-in-out,opacity .25s ease-in-out;transition-delay:.15s}.breach-popup--expand .breach-popup__header{cursor:default}.breach-info{padding:2px;height:100%}.breach-info__inner{padding:22px 22px 0;background-color:#fff;border-bottom-left-radius:15px;border-bottom-right-radius:15px;height:100%;overflow:auto}.breach-info__alert{font-size:24px;line-height:32px;font-weight:700;margin:0}.breach-info__list{margin-top:24px;display:flex;flex-wrap:wrap;gap:24px}@media only screen and (width >= 992px){.breach-info__list{flex-wrap:nowrap}}.breach-info__item{width:100%}.breach-info__item:nth-child(2){max-width:320px}.breach-info__item:nth-child(3){max-width:200px}.breach-info__title{font-size:18px;font-weight:700;line-height:32px;letter-spacing:-.1px;color:#de4558;margin-top:0;margin-bottom:4px}.breach-info__description{font-size:16px;line-height:28px;letter-spacing:-.1px}.breach-info__description ul{margin:0}.breach-info__actions{display:flex;justify-content:center;padding-top:32px;padding-bottom:22px;background-color:#fff;position:sticky;bottom:0}.breach-info__btn{cursor:pointer;border-style:none;outline:none;display:inline-flex;align-items:center;height:48px;padding-inline:20px;border-radius:12px;text-align:center;font-size:16px;font-weight:700;line-height:28px;letter-spacing:-.1px;color:#fff;background-color:#ff6400}.button-expand{position:absolute;bottom:0;left:50%;transform:translate(-50%,100%);z-index:1}.button-expand__pointer{cursor:pointer}.button-expand__alert{pointer-events:none;transition:opacity .25s ease-in-out}.button-expand__arrow{pointer-events:none;transition:transform .25s ease-in-out,opacity .25s ease-in-out;transform-origin:center}.button-expand--minimize .button-expand__arrow,.button-expand--collapse .button-expand__alert,.button-expand--expand .button-expand__alert{opacity:0}.button-expand--expand .button-expand__arrow{transform:rotate(180deg)}.header-collapse{display:flex;align-items:center;flex-wrap:wrap;column-gap:4px;padding-left:8px;font-size:14px;line-height:20px;letter-spacing:-.1px;color:#fff}.header-expand{display:flex;align-items:center;flex-wrap:wrap;column-gap:4px;padding-left:20px;font-size:14px;font-weight:500;line-height:20px;letter-spacing:-.1px;color:#fff}</style></template></div><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2 supports variations"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2-variations");font-weight:100 1000;font-display:swap}</style><div id="veepn-guard-alert"><template shadowrootmode="open"><style>html{box-sizing:border-box;text-size-adjust:100%;word-break:normal;-moz-tab-size:4;tab-size:4}*,:before,:after{background-repeat:no-repeat;box-sizing:border-box}:before,:after{text-decoration:inherit;vertical-align:inherit}*{padding:0;margin:0}hr{overflow:visible;height:0;color:inherit;border:0;border-top:1px solid}details,main{display:block}summary{display:list-item}small{font-size:80%}[hidden]{display:none}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}a{background-color:transparent}a:active,a:hover{outline-width:0}code,kbd,pre,samp{font-family:monospace}pre{font-size:1em}b,strong{font-weight:bolder}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-color:inherit;text-indent:0}iframe{border-style:none}input{border-radius:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;-moz-appearance:textfield;appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none;-moz-appearance:none;appearance:none}textarea{overflow:auto;resize:vertical}button,input,optgroup,select,textarea{font:inherit;color:inherit}optgroup{font-weight:700}button{overflow:visible}button,select{text-transform:none}button,[type=button],[type=reset],[type=submit],[role=button]{cursor:pointer}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button;-moz-appearance:button;appearance:button}button,input,select,textarea{background-color:transparent;border-style:none}button:-moz-focusring,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{outline:1px dotted ButtonText}select{-webkit-appearance:none;-moz-appearance:none;appearance:none}a:focus,button:focus,input:focus,select:focus,textarea:focus{outline-width:0}select::-ms-expand{display:none}select::-ms-value{color:currentcolor}legend{border:0;color:inherit;display:table;white-space:normal;max-width:100%}::-webkit-file-upload-button{-webkit-appearance:button;-moz-appearance:button;appearance:button;color:inherit;font:inherit}[disabled]{cursor:default}img{border-style:none}progress{vertical-align:baseline}[aria-busy=true]{cursor:progress}[aria-controls]{cursor:pointer}[aria-disabled=true]{cursor:default}ul,ol{list-style-type:none}figure{margin:0}.guard-popup{font-family:FigtreeVF,sans-serif;position:fixed;z-index:2147483638;top:8px;left:24px;overflow:visible;color:#222e3a;background-color:#fff;max-width:416px;width:calc(100% - 48px);border-radius:16px;box-shadow:0 4px 20px #00000040;padding:24px}.guard-popup__header{display:flex;justify-content:space-between;align-items:center;column-gap:16px;margin-bottom:24px}.guard-popup__close{display:flex;align-items:center;justify-content:center;width:24px;height:24px;opacity:.7}.guard-popup__img{line-height:0;margin-bottom:24px}.guard-popup__img img{width:100%;aspect-ratio:368/142;object-fit:cover;border-radius:12px;overflow:hidden}.guard-popup__title{font-size:24px;line-height:32px;margin-bottom:8px}.guard-popup__description{font-size:20px;line-height:28px;font-weight:500;color:#4a5764;margin-bottom:28px}.guard-popup__actions{display:flex;justify-content:flex-end;column-gap:16px}.guard-popup__btn{display:flex;align-items:center;justify-content:center;padding:8px 16px;border-radius:5px;font-size:16px;line-height:24px;font-weight:700;cursor:pointer;color:#fff;background:linear-gradient(180deg,#5695fd,#1554ff)}</style></template></div><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2 supports variations"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2-variations");font-weight:100 1000;font-display:swap}</style><iframe src="./TracInstall – The Trac Project_files/aframe.html" width="0" height="0" style="display: none;"></iframe></body><iframe id="google_esf" name="google_esf" src="./TracInstall – The Trac Project_files/zrt_lookup_fy2021.html" style="display: none;"></iframe></html>
